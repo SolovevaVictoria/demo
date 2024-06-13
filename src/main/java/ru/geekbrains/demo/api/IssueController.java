@@ -51,7 +51,7 @@ public class IssueController {
         // ResponseEntity<> сущность HTTP-ответа, содержащая тело ответа и дополнительные метаданные, такие
         // как статус ответа и заголовки
         // метод контроллера возвращает объект типа ResponseEntity, который
-        // содержит объект типа Book как тело ответа
+        // содержит объект типа Issue как тело ответа
         try {
             Issue issue = service.getById(id);
             return ResponseEntity.status(HttpStatus.CREATED).body(issue);
@@ -64,6 +64,11 @@ public class IssueController {
     @GetMapping
     public ResponseEntity<List<Issue>> getAll() {
         return ResponseEntity.ok(service.getAll());
+    }
+
+    @PutMapping("/{id}")
+    public Issue putIssue(long id){
+        return service.putById(id);
     }
 
 }

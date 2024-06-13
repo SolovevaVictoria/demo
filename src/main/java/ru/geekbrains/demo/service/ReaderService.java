@@ -7,6 +7,8 @@ import ru.geekbrains.demo.model.Reader;
 import ru.geekbrains.demo.repository.BookRepository;
 import ru.geekbrains.demo.repository.ReaderRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -27,6 +29,10 @@ public class ReaderService {
 
     public void delete(long id) {
         readerRepository.deleteReaderById(id);
+    }
+
+    public List<Reader> getAll() {
+        return readerRepository.getAll();
     }
 
 }

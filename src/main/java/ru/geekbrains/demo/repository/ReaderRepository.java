@@ -46,5 +46,9 @@ public class ReaderRepository {
     public void deleteReaderById(long id){
         readers.remove(id);
     }
-    
+
+    public List<Reader> getAll() {
+        return new ArrayList<>(readers);
+    }
+
 }

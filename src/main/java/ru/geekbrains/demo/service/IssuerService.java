@@ -48,5 +48,9 @@ public class IssuerService {
 
     public List<Issue> getAll() { return issueRepository.getAll();}
 
+    public Issue putById(long id) {
+        return issueRepository.putById(id);
+    }
+
 
 }

@@ -48,7 +48,7 @@ public class ReaderController {
         return ResponseEntity.status(HttpStatus.CREATED).body(reader);
     }
 
-    @DeleteMapping({"/{id}"})
+    @DeleteMapping("/{id}")
     public ResponseEntity<Reader> deleteReaderById(@PathVariable long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
