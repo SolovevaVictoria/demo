@@ -1,8 +1,10 @@
 package ru.geekbrains.demo.repository;
 import jakarta.annotation.PostConstruct;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import ru.geekbrains.demo.model.Book;
-import ru.geekbrains.demo.model.Issue;
+//import ru.geekbrains.demo.model.Issue;
 
 import java.util.Objects;
 
@@ -14,37 +16,6 @@ import java.util.List;
 // Она указывает, что класс является репозиторием, который предоставляет доступ к данным и
 // выполняет операции базы данных, такие как сохранение, загрузка, обновление и удаление объектов
 @Repository
-public class BookRepository {
-    public final List<Book> books;
+public interface BookRepository  extends JpaRepository<Book, Long> {
 
-    public BookRepository() {
-        this.books = new ArrayList<>();
-    }
-
-    @PostConstruct
-    public void genereteData() {
-        books.addAll(List.of(
-                new Book("Евгений Онегин"),
-                new Book("Spring быстро"),
-                new Book("Spring в действии"),
-                new Book("чистый код")
-        ));
-    }
-    public Book getBookById(long id){
-        return books.stream().filter(it -> Objects.equals(it.getId(), id))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public void save(Book book) {
-        books.add(book);
-    }
-
-    public void deleteBookById(long id){
-        books.remove(id);
-    }
-
-    public List<Book> getAll() {
-        return new ArrayList<>(books);
-    }
     }

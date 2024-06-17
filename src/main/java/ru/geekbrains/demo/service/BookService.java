@@ -1,34 +1,42 @@
 package ru.geekbrains.demo.service;
-import java.util.ArrayList;
-import java.util.List;
-import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.demo.api.IssueRequest;
 import ru.geekbrains.demo.model.Book;
-import ru.geekbrains.demo.model.Issue;
 import ru.geekbrains.demo.repository.BookRepository;
-import java.util.NoSuchElementException;
 
-
+import java.util.List;
+import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class BookService {
+
     private final BookRepository bookRepository;
-    public Book getById(long id) {
-        if (bookRepository.getBookById(id) == null) {
-            throw new NoSuchElementException("Не найдена книга с идентификатором \"" +  id + "\"");
+
+    @Autowired
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+
+    public Book getById(Long id) {
+        Optional<Book> optionalBook = bookRepository.findById(id);
+        if(optionalBook.isPresent()){
+            return optionalBook.get();
+        } else {
+            throw new NullPointerException("Book not found.");
         }
-        Book book = bookRepository.getBookById(id);
-        return book;
     }
 
-    public void create(Book book) {
-        bookRepository.save(book);
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
     }
 
-    public void delete(long id) {
-        bookRepository.deleteBookById(id);
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
     }
-    public List<Book> getAll() { return bookRepository.getAll();}
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
 }
