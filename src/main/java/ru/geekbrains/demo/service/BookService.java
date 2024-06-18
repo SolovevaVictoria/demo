@@ -6,6 +6,7 @@ import ru.geekbrains.demo.model.Book;
 import ru.geekbrains.demo.repository.BookRepository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -24,7 +25,7 @@ public class BookService {
         if(optionalBook.isPresent()){
             return optionalBook.get();
         } else {
-            throw new NullPointerException("Book not found.");
+            throw new NoSuchElementException("Book not found.");
         }
     }
 

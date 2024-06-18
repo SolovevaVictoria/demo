@@ -3,7 +3,11 @@ spring:
     url: jdbc:postgresql://localhost:5431/mysoldb
     username: sol
     password: 1234
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+
+
