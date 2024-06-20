@@ -1,6 +1,7 @@
 package ru.geekbrains.demo.model;
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,14 +10,17 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "books")
+@Schema(name = "Книги")
 public class Book {
 
 
     @Id
+    @Schema(name = "Идентификатор")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name")
+    @Schema(name = "Имя")
     private String name;
 
     public Book() {

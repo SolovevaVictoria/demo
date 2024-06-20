@@ -1,5 +1,6 @@
 package ru.geekbrains.demo.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,16 +15,20 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "issues")
 @NoArgsConstructor
+@Schema(name = "Выдачи")
 public class Issue {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(name = "Идентификатор")
     @Id
     private Long id;
 
     @Column(name = "bookId")
+    @Schema(name = "Идентификатор книги")
     private long bookId;
 
     @Column(name = "readerId")
+    @Schema(name = "Идентификатор читателя")
     private long readerId;
 
 

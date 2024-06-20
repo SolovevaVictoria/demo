@@ -1,6 +1,8 @@
 package ru.geekbrains.demo.api;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,12 +25,14 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/issue")
 @NoArgsConstructor
+@Tag(name = "Issue")
 public class IssueController {
     @Autowired
     private IssuerService service;
 
     // создание запроса
     @PostMapping
+    @Operation(summary = "add new issue", description = "Создание нового запроса на выдачу")
     public ResponseEntity<Issue> issueBook(@RequestBody Issue issue) {
         log.info("Получен запрос на выдачу: readerId = {}, bookId = {}", issue.getReaderId(), issue.getBookId());
         try {
@@ -43,11 +47,13 @@ public class IssueController {
     }
 
     @GetMapping
+    @Operation(summary = "get all issues", description = "Получение списка всех выдачей, которые есть в системе")
     public ResponseEntity<List<Issue>> getIssues() {
         return ResponseEntity.ok(service.getIssues());
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "get issue by id", description = "Получение выдачи по идентификатору")
     public ResponseEntity<Issue> getIssueById(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(service.getIssueById(id));
@@ -57,12 +63,14 @@ public class IssueController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "delete issue by id", description = "Удаление выдачи по идентификатору")
     public ResponseEntity<Void> deleteIssue(@PathVariable Long id) {
         service.deleteIssue(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "return book by id", description = "возврат книги по идентификатору")
     public ResponseEntity<Issue> returnBooks(@PathVariable Long id) {
         return ResponseEntity.ok(service.returnBooks(id));
     }

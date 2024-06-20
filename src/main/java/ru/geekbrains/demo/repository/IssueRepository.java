@@ -23,6 +23,6 @@ import static com.fasterxml.jackson.databind.ser.std.NumberSerializers.addAll;
 // выполняет операции базы данных, такие как сохранение, загрузка, обновление и удаление объектов
 //@Repository
 public interface IssueRepository extends JpaRepository<Issue, Long> {
-    Collection<Object> findAllIssuesByReaderId(long readerId);
+    List<Issue> findAllIssuesByReaderId(long readerId);
 
 }
