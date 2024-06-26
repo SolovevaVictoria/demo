@@ -21,7 +21,7 @@ import static com.fasterxml.jackson.databind.ser.std.NumberSerializers.addAll;
 // Классы, которые служат для доступа к базе данных или другим источникам данных.
 // Она указывает, что класс является репозиторием, который предоставляет доступ к данным и
 // выполняет операции базы данных, такие как сохранение, загрузка, обновление и удаление объектов
-//@Repository
+@Repository
 public interface IssueRepository extends JpaRepository<Issue, Long> {
     List<Issue> findAllIssuesByReaderId(long readerId);
 
