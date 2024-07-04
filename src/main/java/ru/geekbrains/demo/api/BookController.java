@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.demo.aspect.RecoverException;
 import ru.geekbrains.demo.aspect.TimerAnnotation;
 import ru.geekbrains.demo.model.Book;
 //import ru.geekbrains.demo.model.Issue;
@@ -20,6 +21,8 @@ import java.util.NoSuchElementException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 @RestController
 @RequestMapping("/book")
@@ -34,6 +37,7 @@ public class BookController {
         this.service = service;
     }
 
+    @RecoverException(noRecoverFor = {NullPointerException.class})
     @GetMapping("/{id}")  //переменная часть адреса, будет подставляться значение id
     @Operation(summary = "get book by id", description = "Получение книги по идентификатору")
     public ResponseEntity<Book> issueBoot(@PathVariable Long id) {
