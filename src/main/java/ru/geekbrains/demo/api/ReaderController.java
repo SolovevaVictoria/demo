@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.demo.aspect.TimerAnnotation;
 import ru.geekbrains.demo.model.Book;
 //import ru.geekbrains.demo.model.Issue;
 import ru.geekbrains.demo.model.Reader;
@@ -21,6 +22,7 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/reader")
 @Tag(name = "Reader")
+@TimerAnnotation
 public class ReaderController {
    // private static final Logger log = LoggerFactory.getLogger(IssueController.class);
     @Autowired

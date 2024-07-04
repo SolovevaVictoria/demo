@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.demo.aspect.TimerAnnotation;
 import ru.geekbrains.demo.model.Book;
 import ru.geekbrains.demo.model.Issue;
 import ru.geekbrains.demo.service.IssuerService;
@@ -26,6 +27,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("/issue")
 @NoArgsConstructor
 @Tag(name = "Issue")
+@TimerAnnotation
 public class IssueController {
     @Autowired
     private IssuerService service;

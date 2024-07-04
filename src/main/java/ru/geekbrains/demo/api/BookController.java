@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.demo.aspect.TimerAnnotation;
 import ru.geekbrains.demo.model.Book;
 //import ru.geekbrains.demo.model.Issue;
 import ru.geekbrains.demo.service.BookService;
@@ -23,6 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/book")
 @Tag(name = "Book")
+@TimerAnnotation
 public class BookController {
     //private static final Logger log = LoggerFactory.getLogger(IssueController.class);
 
