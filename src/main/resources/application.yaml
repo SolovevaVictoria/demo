@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5431/mysoldb
+    url: jdbc:postgresql://localhost:5431/mysol
     username: sol
     password: 1234
 

@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -30,6 +32,7 @@ public class Issue {
     @Column(name = "readerId")
     @Schema(name = "Идентификатор читателя")
     private long readerId;
+
 
 
     /**
